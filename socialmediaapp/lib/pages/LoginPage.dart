@@ -3,9 +3,12 @@ import 'package:socialmediaapp/components/MyButton.dart';
 import 'package:socialmediaapp/components/MyTextField.dart';
 
 class LoginPage extends StatelessWidget {
+  final void Function()? onTap;
+  LoginPage({super.key, required this.onTap});
+
+  // Text Controllers
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  LoginPage({super.key});
 
   void login() {}
 
@@ -73,9 +76,12 @@ class LoginPage extends StatelessWidget {
                     style: TextStyle(
                         color: Theme.of(context).colorScheme.inversePrimary),
                   ),
-                  Text(
-                    " Register Here",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                  GestureDetector(
+                    onTap: onTap,
+                    child: const Text(
+                      " Register Here",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ],
               )
