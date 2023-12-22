@@ -3,6 +3,7 @@ import 'package:socialmediaapp/components/MyTextField.dart';
 
 class LoginPage extends StatelessWidget {
   TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   LoginPage({super.key});
 
   @override
@@ -30,11 +31,30 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: 40),
               // email text field
               MyTextField(
-                  hintText: "", obscureText: false, controller: emailController)
+                hintText: "Email",
+                obscureText: false,
+                controller: emailController,
+              ),
+              const SizedBox(height: 25),
               // password text field
-
+              MyTextField(
+                hintText: "Password",
+                obscureText: true,
+                controller: passwordController,
+              ),
+              const SizedBox(height: 10),
               // forgot password
-
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    "Forgot Password?",
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.secondary),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 25),
               // sign in button
 
               // blurb
