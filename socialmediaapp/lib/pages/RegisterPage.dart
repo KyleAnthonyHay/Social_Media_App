@@ -44,7 +44,7 @@ class RegisterPage extends StatelessWidget {
               // Email text field
               MyTextField(
                 hintText: "Emal",
-                obscureText: true,
+                obscureText: false,
                 controller: emailController,
               ),
               const SizedBox(height: 10),
@@ -60,18 +60,6 @@ class RegisterPage extends StatelessWidget {
                 hintText: "Confirm Password",
                 obscureText: true,
                 controller: confirmPasswordController,
-              ),
-              const SizedBox(height: 10),
-              // forgot password
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(
-                    "Forgot Password?",
-                    style: TextStyle(
-                        color: Theme.of(context).colorScheme.inversePrimary),
-                  ),
-                ],
               ),
               const SizedBox(height: 25),
               // sign in button
