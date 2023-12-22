@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:socialmediaapp/components/MyButton.dart';
 import 'package:socialmediaapp/components/MyTextField.dart';
 
 class LoginPage extends StatelessWidget {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   LoginPage({super.key});
+
+  void login() {}
 
   @override
   Widget build(BuildContext context) {
@@ -50,14 +53,32 @@ class LoginPage extends StatelessWidget {
                   Text(
                     "Forgot Password?",
                     style: TextStyle(
-                        color: Theme.of(context).colorScheme.secondary),
+                        color: Theme.of(context).colorScheme.inversePrimary),
                   ),
                 ],
               ),
               const SizedBox(height: 25),
               // sign in button
-
+              MyButton(
+                text: "Login",
+                onTap: login,
+              ),
+              const SizedBox(height: 10),
               // blurb
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Dont have an account?",
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.inversePrimary),
+                  ),
+                  Text(
+                    " Register Here",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ],
+              )
             ],
           ),
         ),
