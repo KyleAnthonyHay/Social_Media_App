@@ -1,34 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:socialmediaapp/components/MyTextField.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  TextEditingController emailController = TextEditingController();
+  LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // logo
-            Icon(
-              Icons.account_circle,
-              size: 100,
-              color: Theme.of(context).colorScheme.inversePrimary,
-            ),
-            //app name
+        child: Padding(
+          padding: const EdgeInsets.all(25.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // logo
+              Icon(
+                Icons.person,
+                size: 80,
+                color: Theme.of(context).colorScheme.inversePrimary,
+              ),
+              const SizedBox(height: 25),
+              //app name
+              const Text(
+                "M I N I M A L",
+                style: TextStyle(fontSize: 20),
+              ),
+              const SizedBox(height: 40),
+              // email text field
+              MyTextField(
+                  hintText: "", obscureText: false, controller: emailController)
+              // password text field
 
-            // email text field
+              // forgot password
 
-            // password text field
+              // sign in button
 
-            // forgot password
-
-            // sign in button
-
-            // blurb
-          ],
+              // blurb
+            ],
+          ),
         ),
       ),
     );
