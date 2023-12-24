@@ -2,16 +2,46 @@ import 'package:flutter/material.dart';
 import 'package:socialmediaapp/components/MyButton.dart';
 import 'package:socialmediaapp/components/MyTextField.dart';
 
-class RegisterPage extends StatelessWidget {
-  final void Function()? onTap;
-  RegisterPage({super.key, required this.onTap});
+import 'package:firebase_auth/firebase_auth.dart';
 
+import '../helper/HelperFunctions.dart';
+
+class RegisterPage extends StatefulWidget {
+  final void Function()? onTap;
+  const RegisterPage({super.key, required this.onTap});
+
+  @override
+  State<RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
   TextEditingController emailController = TextEditingController();
+
   TextEditingController passwordController = TextEditingController();
+
   TextEditingController userNameController = TextEditingController();
+
   TextEditingController confirmPasswordController = TextEditingController();
 
-  void register() {}
+  void registerUser() {
+    // show loading circle
+    showDialog(
+      context: context,
+      builder: (context) => const Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
+
+    // make sure passwords map
+    if (passwordController.text != confirmPasswordController.text) {
+      // pop loading circle
+      Navigator.pop(context);
+      // show error message to user
+      displayMessageToUser("Passwords dont match!", context);
+    }
+    // try creating the user
+    try {} catch (error) {}
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +97,7 @@ class RegisterPage extends StatelessWidget {
               // sign in button
               MyButton(
                 text: "Register",
-                onTap: register,
+                onTap: registerUser,
               ),
               const SizedBox(height: 10),
               // blurb
@@ -80,7 +110,7 @@ class RegisterPage extends StatelessWidget {
                         color: Theme.of(context).colorScheme.inversePrimary),
                   ),
                   GestureDetector(
-                    onTap: onTap,
+                    onTap: widget.onTap,
                     child: const Text(
                       " Login Here",
                       style: TextStyle(fontWeight: FontWeight.bold),
