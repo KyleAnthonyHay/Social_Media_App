@@ -110,7 +110,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 controller: confirmPasswordController,
               ),
               const SizedBox(height: 25),
-              // sign in button
+              // register button
               MyButton(
                 text: "Register",
                 onTap: registerUser,
