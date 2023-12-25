@@ -7,10 +7,13 @@ void displayMessageToUser(String message, BuildContext context) {
     context: context,
     builder: (context) => AlertDialog(
       title: const Text("Error"),
-      content: const Text("Passwords do not match"),
+      content: Text(message),
       actions: [
         TextButton(
-          child: const Text("Ok"),
+          child: const Text(
+            "OK",
+            style: TextStyle(color: Colors.black),
+          ),
           onPressed: () {
             Navigator.pop(context);
           },
