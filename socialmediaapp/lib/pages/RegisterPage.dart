@@ -23,7 +23,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   TextEditingController confirmPasswordController = TextEditingController();
 
-  void registerUser() {
+  void registerUser() async {
     // show loading circle
     showDialog(
       context: context,
@@ -38,9 +38,25 @@ class _RegisterPageState extends State<RegisterPage> {
       Navigator.pop(context);
       // show error message to user
       displayMessageToUser("Passwords dont match!", context);
+    } else {
+      //if passwords match, then:
+      // try creating the user
+      try {
+        UserCredential? userCredential =
+            await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailController.text,
+          password: passwordController.text,
+        );
+        // pop loading circle
+        Navigator.pop(context);
+      } on FirebaseAuthException catch (error) {
+        // pop loading circle
+        Navigator.pop(context);
+
+        // display error to user
+        displayMessageToUser(error.code, context);
+      }
     }
-    // try creating the user
-    try {} catch (error) {}
   }
 
   @override
