@@ -8,51 +8,77 @@ class MyDrawer extends StatelessWidget {
     return Drawer(
       backgroundColor: Theme.of(context).colorScheme.background,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // drawer header
-          DrawerHeader(
-            child: Icon(
-              Icons.person_outline,
-              color: Theme.of(context).colorScheme.inversePrimary,
-            ),
+          Column(
+            children: [
+              // drawer header
+              DrawerHeader(
+                child: Icon(
+                  Icons.person_outline,
+                  color: Theme.of(context).colorScheme.inversePrimary,
+                ),
+              ),
+              // Home tile
+              Padding(
+                padding: const EdgeInsets.only(left: 25.0),
+                child: ListTile(
+                  leading: Icon(
+                    Icons.home,
+                    color: Theme.of(context).colorScheme.inversePrimary,
+                  ),
+                  title: Text("H O M E"),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ),
+              // profile tile
+              Padding(
+                padding: const EdgeInsets.only(left: 25.0),
+                child: ListTile(
+                  leading: Icon(
+                    Icons.person,
+                    color: Theme.of(context).colorScheme.inversePrimary,
+                  ),
+                  title: Text("P R O F I L E"),
+                  onTap: () {
+                    // pop drawer
+                    Navigator.pop(context);
+                    // navigate to profile page
+                    Navigator.pushNamed(context, '/ProfilePage');
+                  },
+                ),
+              ),
+              // Users tile
+              Padding(
+                padding: const EdgeInsets.only(left: 25.0),
+                child: ListTile(
+                  leading: Icon(
+                    Icons.group,
+                    color: Theme.of(context).colorScheme.inversePrimary,
+                  ),
+                  title: Text("U S E R S"),
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.pushNamed(context, '/UsersPage');
+                  },
+                ),
+              ),
+            ],
           ),
-          // Home tile
+          // Logout tile
           Padding(
-            padding: const EdgeInsets.only(left: 25.0),
+            padding: const EdgeInsets.only(
+              left: 25.0,
+              bottom: 25,
+            ),
             child: ListTile(
               leading: Icon(
-                Icons.home,
+                Icons.logout,
                 color: Theme.of(context).colorScheme.inversePrimary,
               ),
-              title: Text("H O M E"),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-          ),
-          // profile tile
-          Padding(
-            padding: const EdgeInsets.only(left: 25.0),
-            child: ListTile(
-              leading: Icon(
-                Icons.person,
-                color: Theme.of(context).colorScheme.inversePrimary,
-              ),
-              title: Text("P R O F I L E"),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-          ),
-          // Users tile
-          Padding(
-            padding: const EdgeInsets.only(left: 25.0),
-            child: ListTile(
-              leading: Icon(
-                Icons.group,
-                color: Theme.of(context).colorScheme.inversePrimary,
-              ),
-              title: Text("U S E R S"),
+              title: Text("L O G O U T"),
               onTap: () {
                 Navigator.pop(context);
               },
