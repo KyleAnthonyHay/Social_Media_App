@@ -1,17 +1,13 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:socialmediaapp/auth/LoginOrRegister.dart';
 import 'package:socialmediaapp/auth/auth.dart';
 import 'package:socialmediaapp/pages/HomePage.dart';
-import 'package:socialmediaapp/pages/LoginPage.dart';
 import 'package:socialmediaapp/pages/ProfilePage.dart';
-import 'package:socialmediaapp/pages/RegisterPage.dart';
 import 'package:socialmediaapp/pages/UsersPage.dart';
 import 'package:socialmediaapp/theme/DarkMode.dart';
 import 'package:socialmediaapp/theme/LightMode.dart';
 // for firebase
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
