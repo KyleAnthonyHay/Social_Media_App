@@ -16,9 +16,6 @@ class HomePage extends StatelessWidget {
         title: const Text("HomePage"),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         elevation: 0,
-        actions: [
-          IconButton(onPressed: logout, icon: const Icon(Icons.logout))
-        ],
       ),
       drawer: MyDrawer(),
     );
