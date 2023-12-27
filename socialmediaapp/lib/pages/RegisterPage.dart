@@ -69,7 +69,7 @@ class _RegisterPageState extends State<RegisterPage> {
           .doc(userCredential.user!.email)
           .set({
         'email': userCredential.user!.email,
-        'username:': userNameController.text,
+        'username': userNameController.text,
       });
     }
   }
