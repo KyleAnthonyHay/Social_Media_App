@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:socialmediaapp/components/MyDrawer.dart';
@@ -56,22 +57,48 @@ class HomePage extends StatelessWidget {
             ),
           ),
           // POSTS
-          // StreamBuilder(
-          //   stream: database.getPostsStream(),
-          //   builder: (context, snapshot) {
-          //     // show loading circle
-          //     if (snapshot.connectionState == ConnectionState.waiting) {
-          //       return const Center(
-          //         child: CircularProgressIndicator(),
-          //       );
-          //     }
-          //     // get all posts
+          StreamBuilder(
+            stream: database.getPostsStream(),
+            builder: (context, snapshot) {
+              // show loading circle
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              // get all posts
+              final posts = snapshot.data!.docs;
+              // no data>
+              if (snapshot.data == null || posts.isEmpty) {
+                return const Center(
+                  child: Padding(
+                    padding: EdgeInsets.all(25.0),
+                    child: Text("No Posts..."),
+                  ),
+                );
+              }
+              // return as a list
+              return Expanded(
+                child: ListView.builder(
+                  itemCount: posts.length,
+                  itemBuilder: (context, index) {
+                    // get individual post
+                    final post = posts[index];
+                    // get data from each post
+                    String message = post['PostMessage'];
+                    String userEmail = post['UserEmail'];
+                    Timestamp timeStamp = post['TimeStamp'];
 
-          //     // no data>
-
-          //     // return as a list
-          //   },
-          // )
+                    // return as a list tile
+                    return ListTile(
+                      title: Text(message),
+                      subtitle: Text(userEmail),
+                    );
+                  },
+                ),
+              );
+            },
+          )
         ],
       ),
     );
