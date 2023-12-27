@@ -20,11 +20,6 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Profile"),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        elevation: 0,
-      ),
       backgroundColor: Theme.of(context).colorScheme.background,
       body: FutureBuilder<DocumentSnapshot<Map<String, dynamic>>>(
         future: getUserDetails(),
@@ -40,15 +35,31 @@ class ProfilePage extends StatelessWidget {
             return Text("Error: ${snapshot.error}");
           }
           // data received
-
           else if (snapshot.hasData) {
             Map<String, dynamic>? user = snapshot.data!.data();
 
-            return Column(
-              children: [
-                Text(user!['email']),
-                Text(user['username']),
-              ],
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // Profile Picture
+                  Container(
+                    decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.primary,
+                        borderRadius: BorderRadius.circular(25)),
+                    padding: const EdgeInsets.all(25),
+                    child: Icon(Icons.person,
+                        size: 64,
+                        color: Theme.of(context).colorScheme.inversePrimary),
+                  ),
+
+                  const SizedBox(height: 25),
+                  // Username
+                  Text(user!['username']),
+                  // User Email
+                  Text(user['email']),
+                ],
+              ),
             );
           } else {
             return const Text("No data");
