@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:socialmediaapp/components/MyDrawer.dart';
+import 'package:socialmediaapp/components/MyListTile.dart';
 import 'package:socialmediaapp/components/MyPostButton.dart';
 import 'package:socialmediaapp/components/MyTextField.dart';
 import 'package:socialmediaapp/database/firestore.dart';
@@ -29,7 +30,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        title: const Text("W A L L"),
+        title: const Text("T H E  W A L L"),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -90,10 +91,7 @@ class HomePage extends StatelessWidget {
                     Timestamp timeStamp = post['TimeStamp'];
 
                     // return as a list tile
-                    return ListTile(
-                      title: Text(message),
-                      subtitle: Text(userEmail),
-                    );
+                    return MyListTile(title: message, subTitle: userEmail);
                   },
                 ),
               );
